@@ -42,7 +42,7 @@ steps:
   # --- 5. Deploy the Backend Service ---
   # This step waits for the backend image to be pushed, then deploys it.
   # Note: We keep the backend private by NOT adding '--allow-unauthenticated'.
-  - name: 'gcr.io/google-cloud-sdk/gcloud'
+  - name: 'gcr.io/cloud-builders/gcloud'
     id: 'Deploy Backend'
     args:
       [
@@ -61,7 +61,7 @@ steps:
   # --- 6. Deploy the Frontend UI ---
   # This step waits for the frontend image to be pushed, then deploys it.
   # Note: We make the UI public by ADDING '--allow-unauthenticated'.
-  - name: 'gcr.io/google-cloud-sdk/gcloud'
+  - name: 'gcr.io/cloud-builders/gcloud'
     id: 'Deploy Frontend'
     args:
       [
@@ -80,8 +80,8 @@ steps:
 
 # --- Tell Cloud Build which images to store ---
 images:
-  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_BACKEND_SERVICE_NAME}:$COMMIT_SHA'
-  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_FRONTEND_SERVICE_NAME}:$COMMIT_SHA'
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_BACKEND_SERVICE_NAME}:$COMMIT_SHA'
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_FRONTEND_SERVICE_NAME}:$COMMIT_SHA'
 
 # --- Variables you will set in your Cloud Build Trigger ---
 substitutions:
