@@ -35,7 +35,7 @@ def create_agent_for_request(request: Request):
 # Add ADK endpoint to the FastAPI app.
 add_adk_fastapi_endpoint(
     app,
-    agent_factory=create_agent_for_request,
+    create_agent_for_request,
     path="/",
 )
 
