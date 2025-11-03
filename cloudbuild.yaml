@@ -88,3 +88,6 @@ substitutions:
   _BACKEND_SERVICE_NAME: 'deepresearch-backend'
   _FRONTEND_SERVICE_NAME: 'deepresearch-frontend'
   _REGION: 'us-west1'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
