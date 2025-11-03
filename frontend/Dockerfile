@@ -5,6 +5,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+# Remove custom .npmrc to use public npm registry for build
+RUN rm -f .npmrc
 RUN npm run build
 
 # --- Stage 2: Serve the app ---
