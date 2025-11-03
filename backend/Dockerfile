@@ -12,7 +12,7 @@ COPY pyproject.toml .
 COPY uv.lock .
 
 # 5. Install dependencies.
-RUN uv pip install --no-cache-dir .
+RUN uv pip install --system --no-cache-dir .
 
 # 6. Copy the source code to the container.
 COPY . .
