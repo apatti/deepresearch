@@ -20,3 +20,6 @@ COPY . .
 # 7. Expose the port Cloud Run will use
 EXPOSE 8080
 
+
+# 8. Run the app
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
