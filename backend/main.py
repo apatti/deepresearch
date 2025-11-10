@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from ag_ui_adk import ADKAgent, add_adk_fastapi_endpoint
 
 try:
-    from dr_agent.agent import root_agent
+    from dr_agent.agent import gyanvarta_root_agent
 except ImportError:
     print("Error: dr_agent.agent not found")
     exit(1)
@@ -18,24 +18,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def create_agent_for_request(request: Request):
-    user_id = request.headers.get("x-user-id")
-    if not user_id:
-        raise HTTPException(status_code=401, detail="User ID not found")
-    
-    return ADKAgent(
-        adk_agent=root_agent,
-        app_name="GyanVarta",
-        user_id=user_id,
-        session_timeout_seconds=3600,
-        use_in_memory_services=True,
-    )
-    
-
 # Add ADK endpoint to the FastAPI app.
 add_adk_fastapi_endpoint(
     app,
-    create_agent_for_request,
+    ADKAgent(
+        adk_agent=gyanvarta_root_agent,
+        session_timeout_seconds=3600,
+        use_in_memory_services=True
+    ),
     path="/",
 )
 

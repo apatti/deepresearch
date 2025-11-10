@@ -4,11 +4,11 @@ import { CopilotSidebar } from "@copilotkit/react-ui";
 export default function Home() {
   return (
     <main>
-      <h1>Your main content</h1>
+      <h1>Gyanvarta</h1>
       <CopilotSidebar
         labels={{
-          title: "Popup Assistant",
-          initial: "Hi! I'm connected to an agent. How can I help?",
+          title: "Gyanvarta Assistant",
+          initial: "Hi! I'm connected to gyanvarta agent. What topic do you want to research?",
         }}
       />
     </main>
