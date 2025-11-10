@@ -20,7 +20,7 @@ steps:
       [
         'build',
         '--build-arg',
-        'NEXT_PUBLIC_BACKEND_URL=https://${_BACKEND_SERVICE_NAME}-103391268967.${_REGION}.run.app/',
+        'NEXT_PUBLIC_BACKEND_URL=https://${_BACKEND_SERVICE_NAME}-${PROJECT_NUMBER}.${_REGION}.run.app/',
         '-t',
         '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_FRONTEND_SERVICE_NAME}:$COMMIT_SHA',
         '.',
